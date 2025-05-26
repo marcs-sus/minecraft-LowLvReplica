@@ -1,6 +1,5 @@
-﻿# CMakeList.txt : CMake project for minecraft-LowLvReplica, include source and define
-# project specific logic here.
-#
+﻿# CMakeLists.txt for Minecraft LowLvReplica project
+
 cmake_minimum_required(VERSION 3.15)
 project("minecraft-LowLvReplica")
 
@@ -31,7 +30,7 @@ set(GLM_ROOT "${CMAKE_SOURCE_DIR}/libs/glm")
 include_directories(${GLM_ROOT})
 
 # Source files
-file(GLOB SRC src/*.cpp)
+file(GLOB SRC "${CMAKE_SOURCE_DIR}/src/*.cpp")
 
 # Add source to this project's executable.
 add_executable(${PROJECT_NAME} ${SRC} ${GLAD_SRC})
@@ -41,6 +40,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE
   ${GLFW3_INCLUDE_DIR}
   ${GLAD_ROOT}/include
   ${GLM_ROOT}
+  ${CMAKE_SOURCE_DIR}/include
 )
 
 # Link libraries
