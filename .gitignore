@@ -5,6 +5,7 @@ bin/
 obj/
 lib/
 libs/
+third-party/
 
 # CMake specific
 CMakeLists.txt.user

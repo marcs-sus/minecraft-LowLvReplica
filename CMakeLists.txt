@@ -17,16 +17,16 @@ endif()
 
 # Set libraries and include directories
 # GLFW
-set(GLFW_ROOT_DIR "${CMAKE_SOURCE_DIR}/libs/glfw")
+set(GLFW3_ROOT_DIR "${CMAKE_SOURCE_DIR}/third-party/glfw")
 find_package(GLFW3 REQUIRED)
 
 #GLAD
-set(GLAD_ROOT "${CMAKE_SOURCE_DIR}/libs/glad")
+set(GLAD_ROOT "${CMAKE_SOURCE_DIR}/third-party/glad")
 include_directories(${GLAD_ROOT}/include)
 file(GLOB GLAD_SRC ${GLAD_ROOT}/src/glad.c)
 
 #GLM
-set(GLM_ROOT "${CMAKE_SOURCE_DIR}/libs/glm")
+set(GLM_ROOT "${CMAKE_SOURCE_DIR}/third-party/glm")
 include_directories(${GLM_ROOT})
 
 # Source files
