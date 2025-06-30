@@ -27,7 +27,7 @@ const unsigned int SCR_HEIGHT = 600;
 const char *vertexPath = "shaders/vertexShader.vs";
 const char *fragmentPath = "shaders/fragmentShader.fs";
 
-const char *grassBlockPath = "assets/textures/grass_block.png";
+const char *grassBlockPath = "assets/textures/grass_block_atlas.png";
 const char *stoneBlockPath = "assets/textures/stone_block.png";
 
 // Time
@@ -49,7 +49,7 @@ int main()
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     // Window creation
-    GLFWwindow *window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
+    GLFWwindow *window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "minecraft-LowLvReplica", NULL, NULL);
     if (window == NULL)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
@@ -80,48 +80,48 @@ int main()
     // --- Vertices ---
     float vertices[] = {
         // Back face
-        -0.5f, -0.5f, -0.5f, 0.0f, 0.0f,
-        0.5f, -0.5f, -0.5f, 1.0f, 0.0f,
-        0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
-        -0.5f, 0.5f, -0.5f, 0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f, 0.333f, 0.0f,
+        0.5f, -0.5f, -0.5f, 0.667f, 0.0f,
+        0.5f, 0.5f, -0.5f, 0.667f, 1.0f,
+        -0.5f, 0.5f, -0.5f, 0.333f, 1.0f,
 
         // Front face
-        -0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
-        0.5f, -0.5f, 0.5f, 1.0f, 0.0f,
-        0.5f, 0.5f, 0.5f, 1.0f, 1.0f,
-        -0.5f, 0.5f, 0.5f, 0.0f, 1.0f,
+        -0.5f, -0.5f, 0.5f, 0.333f, 0.0f,
+        0.5f, -0.5f, 0.5f, 0.667f, 0.0f,
+        0.5f, 0.5f, 0.5f, 0.667f, 1.0f,
+        -0.5f, 0.5f, 0.5f, 0.333f, 1.0f,
 
         // Left face
-        -0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
-        -0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
-        -0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
+        -0.5f, 0.5f, 0.5f, 0.333f, 1.0f,
+        -0.5f, 0.5f, -0.5f, 0.667f, 1.0f,
+        -0.5f, -0.5f, -0.5f, 0.667f, 0.0f,
+        -0.5f, -0.5f, 0.5f, 0.333f, 0.0f,
 
         // Right face
-        0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
-        0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
-        0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
-        0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
+        0.5f, 0.5f, 0.5f, 0.667f, 1.0f,
+        0.5f, 0.5f, -0.5f, 0.333f, 1.0f,
+        0.5f, -0.5f, -0.5f, 0.333f, 0.0f,
+        0.5f, -0.5f, 0.5f, 0.667f, 0.0f,
 
         // Bottom face
-        -0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f, 0.667f, 1.0f,
         0.5f, -0.5f, -0.5f, 1.0f, 1.0f,
         0.5f, -0.5f, 0.5f, 1.0f, 0.0f,
-        -0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
+        -0.5f, -0.5f, 0.5f, 0.667f, 0.0f,
 
         // Top face
         -0.5f, 0.5f, -0.5f, 0.0f, 1.0f,
-        0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
-        0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
+        0.5f, 0.5f, -0.5f, 0.333f, 1.0f,
+        0.5f, 0.5f, 0.5f, 0.333f, 0.0f,
         -0.5f, 0.5f, 0.5f, 0.0f, 0.0f};
 
     unsigned int indices[] = {
-        0, 1, 2, 2, 3, 0,       // back face
-        4, 5, 6, 6, 7, 4,       // front face
-        8, 9, 10, 10, 11, 8,    // left face
-        12, 13, 14, 14, 15, 12, // right face
-        16, 17, 18, 18, 19, 16, // bottom face
-        20, 21, 22, 22, 23, 20  // top face
+        0, 1, 2, 2, 3, 0,       // Back face
+        4, 5, 6, 6, 7, 4,       // Front face
+        8, 9, 10, 10, 11, 8,    // Left face
+        12, 13, 14, 14, 15, 12, // Right face
+        16, 17, 18, 18, 19, 16, // Bottom face
+        20, 21, 22, 22, 23, 20  // Top face
     };
 
     // --- VBO and VAO ---
@@ -163,7 +163,7 @@ int main()
     data = stbi_load(grassBlockPath, &width, &height, &nrChannels, 0);
     if (data)
     {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
         glGenerateMipmap(GL_TEXTURE_2D);
     }
     else
