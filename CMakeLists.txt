@@ -20,14 +20,18 @@ endif()
 set(GLFW3_ROOT_DIR "${CMAKE_SOURCE_DIR}/third-party/glfw")
 find_package(GLFW3 REQUIRED)
 
-#GLAD
+# GLAD
 set(GLAD_ROOT "${CMAKE_SOURCE_DIR}/third-party/glad")
 include_directories(${GLAD_ROOT}/include)
 file(GLOB GLAD_SRC ${GLAD_ROOT}/src/glad.c)
 
-#GLM
+# GLM
 set(GLM_ROOT "${CMAKE_SOURCE_DIR}/third-party/glm")
 include_directories(${GLM_ROOT})
+
+# STB
+set(STB_ROOT "${CMAKE_SOURCE_DIR}/third-party/stb")
+include_directories(${STB_ROOT})
 
 # Source files
 file(GLOB SRC "${CMAKE_SOURCE_DIR}/src/*.cpp")
@@ -35,11 +39,23 @@ file(GLOB SRC "${CMAKE_SOURCE_DIR}/src/*.cpp")
 # Add source to this project's executable.
 add_executable(${PROJECT_NAME} ${SRC} ${GLAD_SRC})
 
+# Copy shaders to the build directory
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy_directory
+  "${CMAKE_SOURCE_DIR}/shaders"
+  "$<TARGET_FILE_DIR:${PROJECT_NAME}>/shaders"
+)
+
+# Copy assets to the build directory
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy_directory
+  "${CMAKE_SOURCE_DIR}/assets"
+  "$<TARGET_FILE_DIR:${PROJECT_NAME}>/assets"
+)
+
 # Include directories
 target_include_directories(${PROJECT_NAME} PRIVATE
   ${GLFW3_INCLUDE_DIR}
-  ${GLAD_ROOT}/include
-  ${GLM_ROOT}
   ${CMAKE_SOURCE_DIR}/include
 )
 
