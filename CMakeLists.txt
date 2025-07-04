@@ -34,7 +34,7 @@ set(STB_ROOT "${CMAKE_SOURCE_DIR}/third-party/stb")
 include_directories(${STB_ROOT})
 
 # Source files
-file(GLOB SRC "${CMAKE_SOURCE_DIR}/src/*.cpp")
+file(GLOB_RECURSE SRC "${CMAKE_SOURCE_DIR}/src/*.cpp")
 
 # Add source to this project's executable.
 add_executable(${PROJECT_NAME} ${SRC} ${GLAD_SRC})
