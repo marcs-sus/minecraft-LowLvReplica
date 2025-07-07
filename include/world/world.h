@@ -1,20 +1,11 @@
 #ifndef WORLD_H
 #define WORLD_H
 
-#include <vector>
 #include <glm.hpp>
 
-enum BlockType
-{
-    BLOCK_AIR = 1,
-    BLOCK_GRASS,
-    BLOCK_STONE
-};
+#include "block.h"
 
-struct Block
-{
-    BlockType type;
-};
+#include <vector>
 
 class World
 {
@@ -26,7 +17,7 @@ public:
     // Functions
     void GenerateFlatWorld();
     BlockType GetBlock(unsigned int x, unsigned int y, unsigned int z) const;
-    void SetBlock(unsigned int x, unsigned int y, unsigned int z, BlockType type);
+    void SetBlock(unsigned int x, unsigned int y, unsigned int z, Block block);
 
     // Rendering iterations
     inline unsigned int GetSizeX() const { return sizeX; }

@@ -1,4 +1,4 @@
-#include "renderer.h"
+#include "core/renderer.h"
 
 Renderer::Renderer() : shader(nullptr)
 {

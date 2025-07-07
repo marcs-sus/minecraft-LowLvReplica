@@ -3,9 +3,10 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+
 #include "renderer.h"
-#include "world.h"
-#include "player.h"
+#include "world/world.h"
+#include "player/camera.h"
 
 class Application
 {
@@ -25,7 +26,7 @@ private:
     // Objects
     Renderer renderer;
     World world;
-    Player player;
+    Camera camera;
 
     // Time management
     float deltaTime = 0.0f;

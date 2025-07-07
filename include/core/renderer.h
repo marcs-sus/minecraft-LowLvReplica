@@ -3,7 +3,8 @@
 
 #include <glad/glad.h>
 #include <glm.hpp>
-#include "shader.h"
+
+#include "shader/shader.h"
 
 class World;
 

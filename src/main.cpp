@@ -1,4 +1,4 @@
-#include "application.h"
+#include "core/application.h"
 
 // Settings
 const unsigned int SCR_WIDTH = 800;
