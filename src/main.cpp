@@ -4,10 +4,9 @@
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
-int main()
-{
-    Application app(SCR_WIDTH, SCR_HEIGHT, "Minecraft Clone");
-    app.Run();
+int main() {
+  Application app(SCR_WIDTH, SCR_HEIGHT, "OpenGL Cube");
+  app.Run();
 
-    return 0;
+  return 0;
 }

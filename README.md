@@ -1,3 +1,3 @@
-# minecraft-LowLvReplica
+# opengl-cube
 
-A low-level C++ OpenGL project aiming to replicate Minecraft’s core mechanics with minimal libraries and no game engine.
+A simple C++ OpenGL project demonstrating a textured cube with camera controls.

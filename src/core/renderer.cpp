@@ -1,10 +1,5 @@
 #include "core/renderer.h"
 
-Renderer::Renderer() : shader(nullptr)
-{
-}
+Renderer::Renderer() : shader(nullptr) {}
 
-Renderer::~Renderer()
-{
-    delete shader;
-}
+Renderer::~Renderer() { delete shader; }
